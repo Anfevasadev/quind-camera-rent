@@ -1,4 +1,13 @@
 services:
+  api:
+    build: 
+      context: ./back
+      dockerfile: Dockerfile
+    container_name: camera_rental_api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
   postgres:
     build:
       context: ./database
