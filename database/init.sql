@@ -74,7 +74,7 @@ VALUES
     ('FILM002', 'film', 'available', 2),
     ('FILM003', 'film', 'available', 3);
 
-INSERT INTO customers (name, email, rented_camera_reference)
+INSERT INTO users (name, email, rented_camera_reference)
 VALUES 
     ('Alice', 'alice@example.com', NULL),
     ('Bob', 'bob@example.com', 'CAM001'),
