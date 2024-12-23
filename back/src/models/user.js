@@ -22,7 +22,7 @@ const User = sequelize.define(
       },
     },
     password_hash: {
-      type: DataTypes.CHAR(255),
+      type: DataTypes.STRING(100),
       allowNull: false,
     },
     banned_until: {

@@ -30,7 +30,7 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL,
-    password_hash CHAR(255) NOT NULL,
+    password_hash VARCHAR(100) NOT NULL,
     banned_until DATE DEFAULT NULL,
     rented_camera_reference VARCHAR(50) UNIQUE REFERENCES items(reference) ON DELETE SET NULL,
     role VARCHAR(10) CHECK (role IN ('admin', 'user')) NOT NULL DEFAULT 'user'
