@@ -1,18 +1,16 @@
 import Item from '../models/item.js';
-import Brand from '../models/brand.js';
+// import Camera from '../models/camera.js';
+// import Film from '../models/film.js';
 
 export const createItem = async (req, res) => {
-  const { reference, type, state, brand_id } = req.body;
+  const { reference, type, state, camera_id, film_id } = req.body;
 
   try {
-    const newItem = await Item.create({ reference, type, state, brand_id });
-    const itemWithBrand = await Item.findByPk(newItem.reference, {
-      include: Brand,
-    });
+    const newItem = await Item.create({ reference, type, state, camera_id, film_id });
     res.status(201).json({
       success: true,
       message: 'Item creado exitosamente',
-      data: itemWithBrand,
+      data: newItem,
     });
   } catch (error) {
     res.status(500).json({
@@ -25,9 +23,7 @@ export const createItem = async (req, res) => {
 
 export const getItems = async (req, res) => {
   try {
-    const items = await Item.findAll({
-      include: Brand,
-    });
+    const items = await Item.findAll();
     res.status(200).json({
       success: true,
       data: items,
@@ -45,9 +41,7 @@ export const getItemByReference = async (req, res) => {
   const { reference } = req.params;
 
   try {
-    const item = await Item.findByPk(reference, {
-      include: Brand,
-    });
+    const item = await Item.findByPk(reference);
 
     if (!item) {
       return res.status(404).json({
@@ -71,7 +65,7 @@ export const getItemByReference = async (req, res) => {
 
 export const updateItem = async (req, res) => {
   const { reference } = req.params;
-  const { type, state, brand_id } = req.body;
+  const { type, state, camera_id, film_id } = req.body;
 
   try {
     const item = await Item.findByPk(reference);
@@ -83,16 +77,12 @@ export const updateItem = async (req, res) => {
       });
     }
 
-    await item.update({ type, state, brand_id });
-
-    const updatedItem = await Item.findByPk(reference, {
-      include: Brand,
-    });
+    await item.update({ type, state, camera_id, film_id });
 
     res.status(200).json({
       success: true,
       message: 'Item actualizado exitosamente',
-      data: updatedItem,
+      data: item,
     });
   } catch (error) {
     res.status(500).json({

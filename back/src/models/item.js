@@ -1,10 +1,11 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
-import Brand from './brand.js';
+import Camera from './camera.js';
+import Film from './film.js';
 
 const Item = sequelize.define('Item', {
   reference: {
-    type: DataTypes.STRING(50),
+    type: DataTypes.STRING(10),
     primaryKey: true,
   },
   type: {
@@ -22,11 +23,19 @@ const Item = sequelize.define('Item', {
       isIn: [['available', 'rented', 'delayed', 'under_repair']],
     },
   },
-  brand_id: {
+  camera_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
     references: {
-      model: 'brands',
+      model: 'cameras',
+      key: 'id',
+    },
+  },
+  film_id: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    references: {
+      model: 'films',
       key: 'id',
     },
   },
@@ -35,6 +44,7 @@ const Item = sequelize.define('Item', {
   tableName: 'items',
 });
 
-Item.belongsTo(Brand, { foreignKey: 'brand_id' });
+Item.belongsTo(Camera, { foreignKey: 'camera_id' });
+Item.belongsTo(Film, { foreignKey: 'film_id' });
 
 export default Item;
