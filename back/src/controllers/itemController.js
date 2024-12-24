@@ -1,16 +1,22 @@
 import Item from '../models/item.js';
-// import Camera from '../models/camera.js';
-// import Film from '../models/film.js';
+import Camera from '../models/camera.js';
+import Film from '../models/film.js';
 
 export const createItem = async (req, res) => {
   const { reference, type, state, camera_id, film_id } = req.body;
 
   try {
     const newItem = await Item.create({ reference, type, state, camera_id, film_id });
+    const itemWithDetails = await Item.findByPk(newItem.reference, {
+      include: [
+        { model: Camera, as: 'camera' },
+        { model: Film, as: 'film' },
+      ],
+    });
     res.status(201).json({
       success: true,
       message: 'Item creado exitosamente',
-      data: newItem,
+      data: itemWithDetails,
     });
   } catch (error) {
     res.status(500).json({
@@ -23,7 +29,12 @@ export const createItem = async (req, res) => {
 
 export const getItems = async (req, res) => {
   try {
-    const items = await Item.findAll();
+    const items = await Item.findAll({
+      include: [
+        { model: Camera, as: 'camera' },
+        { model: Film, as: 'film' },
+      ],
+    });
     res.status(200).json({
       success: true,
       data: items,
@@ -41,7 +52,12 @@ export const getItemByReference = async (req, res) => {
   const { reference } = req.params;
 
   try {
-    const item = await Item.findByPk(reference);
+    const item = await Item.findByPk(reference, {
+      include: [
+        { model: Camera, as: 'camera' },
+        { model: Film, as: 'film' },
+      ],
+    });
 
     if (!item) {
       return res.status(404).json({
@@ -79,10 +95,17 @@ export const updateItem = async (req, res) => {
 
     await item.update({ type, state, camera_id, film_id });
 
+    const updatedItem = await Item.findByPk(reference, {
+      include: [
+        { model: Camera, as: 'camera' },
+        { model: Film, as: 'film' },
+      ],
+    });
+
     res.status(200).json({
       success: true,
       message: 'Item actualizado exitosamente',
-      data: item,
+      data: updatedItem,
     });
   } catch (error) {
     res.status(500).json({

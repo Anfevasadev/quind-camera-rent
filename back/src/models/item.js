@@ -44,7 +44,7 @@ const Item = sequelize.define('Item', {
   tableName: 'items',
 });
 
-Item.belongsTo(Camera, { foreignKey: 'camera_id' });
-Item.belongsTo(Film, { foreignKey: 'film_id' });
+Item.belongsTo(Camera, { foreignKey: 'camera_id', as: 'camera' });
+Item.belongsTo(Film, { foreignKey: 'film_id', as: 'film' });
 
 export default Item;
