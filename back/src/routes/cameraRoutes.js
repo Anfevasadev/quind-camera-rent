@@ -4,9 +4,9 @@ import { isAuthenticated, isAdmin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.post('/', isAuthenticated, isAdmin, createCamera);
 router.get('/', getCameras);
 router.get('/:id', getCameraById);
+router.post('/create', isAuthenticated, isAdmin, createCamera);
 router.put('/:id', isAuthenticated, isAdmin, updateCamera);
 router.delete('/:id', isAuthenticated, isAdmin, deleteCamera);
 
