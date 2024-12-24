@@ -1,6 +1,8 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 import Brand from './brand.js';
+import Camera from './camera.js';
+// import Compatibility from './compatibility.js';
 
 const Film = sequelize.define('Film', {
   id: {
