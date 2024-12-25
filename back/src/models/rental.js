@@ -29,9 +29,17 @@ const Rental = sequelize.define('Rental', {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  return_date: {
+  due_date: {
     type: DataTypes.DATE,
     allowNull: false,
+  },
+  returned_date: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
+  is_returned: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
   },
   late_days: {
     type: DataTypes.INTEGER,

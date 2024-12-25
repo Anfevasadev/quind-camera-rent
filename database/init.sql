@@ -42,7 +42,9 @@ CREATE TABLE rentals (
     customer_id INT REFERENCES users(id) ON DELETE CASCADE,
     item_reference VARCHAR(50) REFERENCES items(reference) ON DELETE CASCADE,
     rental_date DATE NOT NULL,
-    return_date DATE NOT NULL,
+    due_date DATE NOT NULL,
+    returned_date DATE DEFAULT NULL,
+    is_returned BOOLEAN DEFAULT FALSE,
     late_days INT DEFAULT 0
 );
 
@@ -94,6 +96,6 @@ VALUES
     ('Bob', 'bob@example.com', 'hashed_password_678' , 'CAM001', 'user'),
     ('Charlie', 'charlie@example.com', 'hashed_password_901' , NULL, 'user');
 
-INSERT INTO rentals (customer_id, item_reference, rental_date, return_date)
+INSERT INTO rentals (customer_id, item_reference, rental_date, due_date)
 VALUES 
     (2, 'CAM001', CURRENT_DATE - INTERVAL '3 days', CURRENT_DATE - INTERVAL '1 day');
