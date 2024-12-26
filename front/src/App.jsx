@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
 import "./App.css";
+import Auth from "./pages/Auth";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/:type/:id" element={<ProductDetail />} />
+            <Route path="/auth" element={<Auth />} />
           </Routes>
         </main>
         <Footer />
