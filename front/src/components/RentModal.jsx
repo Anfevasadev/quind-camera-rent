@@ -10,11 +10,11 @@ const RentModal = ({ reference, onClose }) => {
   return (
     <div className="rent-modal">
       <div className="rent-modal__content">
-        <h2 className="rent-modal__title">Rent Item {reference}</h2>
+        <h2 className="rent-modal__title">Alquilar item {reference}</h2>
         <form onSubmit={handleSubmit} className="rent-modal__form">
           <div className="rent-modal__field">
             <label htmlFor="address" className="rent-modal__label">
-              Delivery Address
+              Dirección de entrega:
             </label>
             <textarea
               id="address"
@@ -25,10 +25,10 @@ const RentModal = ({ reference, onClose }) => {
           </div>
           <div className="rent-modal__actions">
             <button type="button" onClick={onClose} className="rent-modal__button rent-modal__button--cancel">
-              Cancel
+              Cancelar
             </button>
             <button type="submit" className="rent-modal__button rent-modal__button--confirm">
-              Confirm Rental
+              Confirmar alquiler
             </button>
           </div>
         </form>
