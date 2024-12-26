@@ -5,24 +5,27 @@ import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
 import Auth from "./pages/Auth";
 import Rentals from "./pages/Rentals";
+import { AuthProvider } from "./contexts/AuthContext";
 import "./App.css";
 
 function App() {
   return (
-    <Router>
-      <div className="app">
-        <Header />
-        <main className="container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/:type/:id" element={<ProductDetail />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/rentals" element={<Rentals />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="app">
+          <Header />
+          <main className="container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/:type/:id" element={<ProductDetail />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/rentals" element={<Rentals />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 

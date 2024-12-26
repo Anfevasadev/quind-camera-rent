@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
+import { useContext } from 'react';
+import AuthContext from '../contexts/AuthContext';
 import "../styles/components/Header.css";
 
 const Header = () => {
-  const isAuthenticated = true;
+  const { authToken, logout } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <header className="header">
@@ -11,19 +17,21 @@ const Header = () => {
           Quind Camera Rent
         </Link>
         <nav className="header__nav">
-          {isAuthenticated ? (
+        {authToken ? (
             <>
               <Link to="/rentals" className="header__link">
                 Mis alquileres
               </Link>
-              <Link to="/auth" className="header__link">
+              <button onClick={handleLogout} className="header__link">
                 Cerrar sesión
-              </Link>
+              </button>
             </>
           ) : (
-            <Link to="/auth" className="header__link">
-              Iniciar sesión / Registrarse
-            </Link>
+            <>
+              <Link to="/auth" className="header__link">
+                Iniciar sesión / Registrarse
+              </Link>
+            </>
           )}
         </nav>
       </div>

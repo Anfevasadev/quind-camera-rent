@@ -8,8 +8,8 @@ function Home() {
       <Hero />
       <div id="catalog" className="home__catalog">
         <h2 className="home__catalog-title">Nuestra colección</h2>
-        <ProductCarousel title="Cámaras" items={cameras} type={"camera"} />
-        <ProductCarousel title="Películas" items={films} type={"film"} />
+        <ProductCarousel title="Cámaras" type={"camera"} />
+        <ProductCarousel title="Películas" type={"film"} />
       </div>
     </div>
   );

@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import AuthContext from '../contexts/AuthContext';
 import { validateEmail } from '../utils/valdation';
 
 const LoginForm = () => {
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -46,7 +49,8 @@ const LoginForm = () => {
     }
 
     try {
-      // TODO: Implement login logic with Supabase
+      const response = await axios.post('http://localhost:3000/api/auth/login', formData);
+      login(response.data.data.token);
       navigate('/');
     } catch (error) {
       setErrors({ submit: error.message });

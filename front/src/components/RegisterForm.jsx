@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import AuthContext from '../contexts/AuthContext';
 import { validateEmail, validatePassword } from '../utils/valdation';
 
 const RegisterForm = () => {
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -59,7 +62,8 @@ const RegisterForm = () => {
     }
 
     try {
-      // TODO: Implement registration logic 
+      const response = await axios.post('http://localhost:3000/api/users/register', formData);
+      login(response.data.data.token);
       navigate('/');
     } catch (error) {
       setErrors({ submit: error.message });
