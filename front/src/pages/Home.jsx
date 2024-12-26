@@ -3,17 +3,6 @@ import ProductCarousel from "../components/ProductCarousel";
 import "../styles/pages/Home.css";
 
 function Home() {
-  const cameras = [
-    { id: 1, name: "Canon AE-1", brand: "Canon", available: true },
-    { id: 2, name: "Pentax K1000", brand: "Pentax", available: true },
-    { id: 3, name: "Nikon FM2", brand: "Nikon", available: false },
-  ];
-
-  const films = [
-    { id: 1, name: "Portra 400", brand: "Kodak", available: true },
-    { id: 2, name: "HP5 Plus", brand: "Ilford", available: true },
-    { id: 3, name: "Gold 200", brand: "Kodak", available: false },
-  ];
   return (
     <div className="home">
       <Hero />
