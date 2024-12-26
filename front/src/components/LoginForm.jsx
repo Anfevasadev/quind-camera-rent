@@ -56,7 +56,7 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit} className="auth-form">
       <div className="form-group">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Correo</label>
         <input
           type="email"
           id="email"
@@ -69,7 +69,7 @@ const LoginForm = () => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Contraseña</label>
         <input
           type="password"
           id="password"
@@ -83,7 +83,7 @@ const LoginForm = () => {
 
       {errors.submit && <div className="error-message">{errors.submit}</div>}
       
-      <button type="submit" className="auth-button">Login</button>
+      <button type="submit" className="auth-button">Iniciar sesión</button>
     </form>
   );
 };

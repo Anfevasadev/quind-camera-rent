@@ -14,13 +14,13 @@ const Auth = () => {
               className={`auth-tab ${isLogin ? 'active' : ''}`}
               onClick={() => setIsLogin(true)}
             >
-              Login
+              Iniciar sesión
             </button>
             <button 
               className={`auth-tab ${!isLogin ? 'active' : ''}`}
               onClick={() => setIsLogin(false)}
             >
-              Register
+              Crear cuenta
             </button>
           </div>
           {isLogin ? <LoginForm /> : <RegisterForm />}

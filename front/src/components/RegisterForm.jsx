@@ -32,6 +32,9 @@ const RegisterForm = () => {
     const newErrors = {};
 
     // Validation
+    if (!formData.name) {
+      newErrors.name = 'Name is required';
+    }
     if (!formData.email) {
       newErrors.email = 'Email is required';
     } else if (!validateEmail(formData.email)) {
@@ -75,10 +78,10 @@ const RegisterForm = () => {
           onChange={handleChange}
           className={errors.name ? 'error' : ''}
         />
-        {errors.email && <span className="error-message">{errors.email}</span>}
+        {errors.name && <span className="error-message">{errors.name}</span>}
       </div>
       <div className="form-group">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Correo</label>
         <input
           type="email"
           id="email"
@@ -91,7 +94,7 @@ const RegisterForm = () => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Contraseña</label>
         <input
           type="password"
           id="password"
@@ -104,7 +107,7 @@ const RegisterForm = () => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="confirmPassword">Confirm Password</label>
+        <label htmlFor="confirmPassword">Confirmar contraseña</label>
         <input
           type="password"
           id="confirmPassword"
@@ -118,7 +121,7 @@ const RegisterForm = () => {
 
       {errors.submit && <div className="error-message">{errors.submit}</div>}
       
-      <button type="submit" className="auth-button">Register</button>
+      <button type="submit" className="auth-button">Crear cuenta</button>
     </form>
   );
 };
