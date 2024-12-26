@@ -20,9 +20,7 @@ const ProductCarousel = ({ title, type }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/api/${type}s`);
-        setItems(response.data.data);
-        console.log(response.data.data);
-        
+        setItems(response.data.data);        
       } catch (error) {
         console.error('Error fetching data:', error);
       }
