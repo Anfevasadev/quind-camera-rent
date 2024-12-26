@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useContext } from 'react';
-import AuthContext from '../contexts/AuthContext';
+import { useContext } from "react";
+import AuthContext from "../contexts/AuthContext";
 import "../styles/components/Header.css";
 
 const Header = () => {
@@ -17,7 +17,10 @@ const Header = () => {
           Quind Camera Rent
         </Link>
         <nav className="header__nav">
-        {authToken ? (
+          <Link to="/bonus" className="header__link">
+            Bonus
+          </Link>
+          {authToken ? (
             <>
               <Link to="/rentals" className="header__link">
                 Mis alquileres
