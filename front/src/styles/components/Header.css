@@ -1,0 +1,33 @@
+.header {
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-default);
+  }
+  
+  .header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+  
+  .header__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  
+  .header__nav {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .header__link {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .header__link:hover {
+    color: var(--color-accent);
+  }
