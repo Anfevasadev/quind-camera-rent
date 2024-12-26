@@ -11,7 +11,7 @@ const RentButton = ({ reference }) => {
         className="rent-button"
         onClick={() => setIsModalOpen(true)}
       >
-        Rent Now
+        Alquilar ahora
       </button>
       {isModalOpen && (
         <RentModal 

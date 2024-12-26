@@ -6,10 +6,9 @@ const Hero = () => {
   return (
     <section className="hero">
       <div className="hero__content">
-        <h1 className="hero__title">Descubre la fotografía analógica</h1>
+        <h1 className="hero__title">Cámaras analógicas a tu puerta</h1>
         <p className="hero__subtitle">
-          Alquile cámaras y películas de alta calidad para su próxima aventura
-          fotográfica
+          Lo clásico nunca pasa de moda, alquila ahora con la comodidad de hoy.
         </p>
         <a href="#catalog" className="hero__cta">
           Explora nuestro catálogo
