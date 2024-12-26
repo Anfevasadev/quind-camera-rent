@@ -1,5 +1,6 @@
 import Film from '../models/film.js';
 import Brand from '../models/brand.js';
+import Item from '../models/item.js';
 
 export const createFilm = async (req, res) => {
   const { name, iso, format, brand_id } = req.body;
@@ -28,9 +29,21 @@ export const getFilms = async (req, res) => {
     const films = await Film.findAll({
       include: Brand,
     });
+    const filmsWithAvailability = await Promise.all(films.map(async (film) => {
+      const availableItem = await Item.findOne({
+        where: {
+          film_id: film.id,
+          state: 'available',
+        },
+      });
+      return {
+        ...film.toJSON(),
+        available: !!availableItem,
+      };
+    }));
     res.status(200).json({
       success: true,
-      data: films,
+      data: filmsWithAvailability,
     });
   } catch (error) {
     res.status(500).json({

@@ -1,5 +1,6 @@
 import Camera from '../models/camera.js';
 import Brand from '../models/brand.js';
+import Item from '../models/item.js';
 
 export const createCamera = async (req, res) => {
   const { model, has_flash, brand_id } = req.body;
@@ -28,9 +29,21 @@ export const getCameras = async (req, res) => {
     const cameras = await Camera.findAll({
       include: Brand,
     });
+    const camerasWithAvailability = await Promise.all(cameras.map(async (camera) => {
+      const availableItem = await Item.findOne({
+        where: {
+          camera_id: camera.id,
+          state: 'available',
+        },
+      });
+      return {
+        ...camera.toJSON(),
+        available: !!availableItem,
+      };
+    }));
     res.status(200).json({
       success: true,
-      data: cameras,
+      data: camerasWithAvailability,
     });
   } catch (error) {
     res.status(500).json({
