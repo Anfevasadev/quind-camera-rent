@@ -3,8 +3,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
-import "./App.css";
 import Auth from "./pages/Auth";
+import Rentals from "./pages/Rentals";
+import "./App.css";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/:type/:id" element={<ProductDetail />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/rentals" element={<Rentals />} />
           </Routes>
         </main>
         <Footer />

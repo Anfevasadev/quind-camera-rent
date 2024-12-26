@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "../styles/components/Header.css";
 
 const Header = () => {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
 
   return (
     <header className="header">

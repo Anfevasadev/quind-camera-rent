@@ -1,0 +1,56 @@
+.rentals {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .rentals__title {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+  }
+  
+  .rentals__list {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .rental-card {
+    background: var(--color-white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-default);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .rental-card__name {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin: 0 0 0.5rem;
+  }
+  
+  .rental-card__ref {
+    color: var(--color-text-light);
+    margin: 0 0 0.5rem;
+  }
+  
+  .rental-card__dates {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+  
+  .rental-card__return {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .rental-card__return:hover {
+    background-color: #c0392b;
+  }
