@@ -22,8 +22,6 @@ const Rentals = () => {
             },
           }
         );
-        console.log(response.data.data);
-        
         setRentals(response.data.data);
         setLoading(false);
       } catch (error) {
