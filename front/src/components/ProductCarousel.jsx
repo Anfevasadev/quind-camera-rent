@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import imgCam1 from "../assets/analog-cam-1.png";
 import imgCam2 from "../assets/analog-cam-2.png";
@@ -10,8 +12,24 @@ import "../styles/components/ProductCarousel.css";
 const cameras = [imgCam1, imgCam2, imgCam3];
 const films = [imgFilm1, imgFilm2, imgFilm3];
 
-const ProductCarousel = ({ title, items, type }) => {
+const ProductCarousel = ({ title, type }) => {
+  const [items, setItems] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/api/${type}s`);
+        setItems(response.data.data);
+        console.log(response.data.data);
+        
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [type]);
 
   const handleCardClick = (item) => {
     navigate(`/${type}/${item.id}`);
@@ -39,14 +57,14 @@ const ProductCarousel = ({ title, items, type }) => {
           >
             <img
               src={randomImage()}
-              alt={item.name}
+              alt={item?.name}
               className="carousel__image"
             />
-            <h3 className="carousel__item-title">{item.name}</h3>
-            <p className="carousel__brand">{item.brand}</p>
+            <h3 className="carousel__item-title">{type === "camera" ? item?.model : item?.name}</h3>
+            <p className="carousel__brand">{item?.Brand?.name}</p>
             <span
               className={`carousel__status ${
-                item.available
+                item?.available
                   ? "carousel__status--available"
                   : "carousel__status--unavailable"
               }`}
