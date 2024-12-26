@@ -27,3 +27,12 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    container_name: camera_rental_front
+    ports:
+      - "80:80"
+    depends_on:
+      - api
