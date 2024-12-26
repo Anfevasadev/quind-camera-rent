@@ -70,3 +70,24 @@ export const editRentalController = async (req, res) => {
     });
   }
 };
+
+export const getUserRentalsController = async (req, res) => {
+  const userId = req.user.id;
+
+  try {
+    const rentals = await Rental.findAll({
+      where: { customer_id: userId },
+    });
+
+    res.status(200).json({
+      success: true,
+      data: rentals,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error al obtener las rentas del usuario',
+      error: error.message,
+    });
+  }
+};
