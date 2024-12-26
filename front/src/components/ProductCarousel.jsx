@@ -18,8 +18,6 @@ const ProductCarousel = ({ title, items, type }) => {
   };
 
   const randomImage = () => {
-    console.log("Type", type);
-    
     if (type === "camera") {
       return cameras[Math.floor(Math.random() * cameras.length)];
     } else {
