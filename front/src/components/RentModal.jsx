@@ -31,6 +31,7 @@ const RentModal = ({ itemReference, onClose }) => {
         }
       );
       onClose(); // Close the modal on success
+      window.location.reload(); // Reload the page
     } catch (error) {
       console.log(error.response?.data);
     
