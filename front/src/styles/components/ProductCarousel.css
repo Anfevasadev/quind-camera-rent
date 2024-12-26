@@ -1,0 +1,68 @@
+.carousel {
+    margin: 2rem 0;
+  }
+  
+  .carousel__title {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+  }
+  
+  .carousel__container {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scrollbar-width: thin;
+  }
+  
+  .carousel__item {
+    flex: 0 0 300px;
+    background: var(--color-white);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: var(--shadow-default);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .carousel__item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .carousel__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  .carousel__item-title {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .carousel__brand {
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+  }
+  
+  .carousel__status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+  }
+  
+  .carousel__status--available {
+    background-color: var(--color-available);
+    color: white;
+  }
+  
+  .carousel__status--unavailable {
+    background-color: var(--color-unavailable);
+    color: white;
+  }
