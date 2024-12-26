@@ -30,19 +30,19 @@ export const rentItem = async (userId, itemReference) => {
     throw new Error("El cliente ya tiene una cámara alquilada");
   }
 
-  // TODO: el cliente puede alquilar más de un item a la vez pero no más de una cámara
-  const existingRental = await Rental.findOne({
-    where: {
-      customer_id: userId,
-      due_date: {
-        [Op.gt]: new Date(),
+  if (item.type === "camera") {
+    const existingCameraRental = await Rental.findOne({
+      where: {
+        customer_id: userId,
+        is_returned: false,
+        type : 'camera',
       },
-      is_returned: false,
-    },
-  });
+      include: [Item],
+    });
 
-  if (existingRental) {
-    throw new Error("El cliente ya tiene un item alquilado");
+    if (existingCameraRental) {
+      throw new Error("El cliente ya tiene una cámara alquilada");
+    }
   }
 
   const rentalDate = new Date();
