@@ -69,7 +69,7 @@ const ProductCarousel = ({ title, type }) => {
                   : "carousel__status--unavailable"
               }`}
             >
-              {item.available ? "Available" : "Unavailable"}
+              {item.available ? "Disponible" : "No disponible"}
             </span>
           </div>
         ))}
