@@ -35,7 +35,6 @@ export const rentItem = async (userId, itemReference) => {
       where: {
         customer_id: userId,
         is_returned: false,
-        type : 'camera',
       },
       include: [Item],
     });

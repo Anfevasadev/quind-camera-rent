@@ -2,6 +2,7 @@ import RentButton from './RentButton';
 import '../styles/components/ItemsCarousel.css';
 
 const ItemsCarousel = ({ items }) => {
+  
   return (
     <div className="items-carousel">
       {items?.map((item) => (
@@ -18,7 +19,7 @@ const ItemsCarousel = ({ items }) => {
             </span>
           )}
           {item.state === 'available' && (
-            <RentButton reference={item.reference} />
+            <RentButton itemReference={item.reference} />
           )}
         </div>
       ))}
